@@ -17,6 +17,7 @@ class SentimentController extends Controller {
 
     $tweets = $this->getTweets($request->q, $twitter);
     $result = $this->getResult($tweets);
+    $result["text"] = $request->q;
 
     return response()
       ->json($result);
