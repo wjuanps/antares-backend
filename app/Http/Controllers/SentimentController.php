@@ -23,6 +23,22 @@ class SentimentController extends Controller {
       ->json($result);
   }
 
+  public function indexCompare(Request $request, Twitter $twitter) {
+    $this->classifierController->trainModel();
+
+    $tweetsA = $this->getTweets($request->a, $twitter);
+    $tweetsB = $this->getTweets($request->b, $twitter);
+
+    $resultA = $this->getResult($tweetsA);
+    $resultB = $this->getResult($tweetsB);
+
+    return response()
+      ->json(array(
+        "resultA" => $resultA,
+        "resultB" => $resultB
+      ));
+  }
+
   protected function getTweets(String $q, Twitter $twitter) {
     $tweets = $twitter->search($q, 100);
     return array_map(function ($tweet) {

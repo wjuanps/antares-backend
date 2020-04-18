@@ -25,4 +25,10 @@ Route::group([], function () {
    * @return mixed
    */
   Route::get("/tweets/{q}", "SentimentController@index");
+
+  /**
+   *
+   * @return mixed
+   */
+  Route::get("/compare/{a}/{b}", "SentimentController@indexCompare");
 });
