@@ -32,10 +32,13 @@ class SentimentController extends Controller {
     $resultA = $this->getResult($tweetsA);
     $resultB = $this->getResult($tweetsB);
 
+    $resultA["text"] = $request->a;
+    $resultB["text"] = $request->b;
+
     return response()
       ->json(array(
-        "resultA" => $resultA,
-        "resultB" => $resultB
+        "a" => $resultA,
+        "b" => $resultB
       ));
   }
 
