@@ -15,6 +15,11 @@ class CreateDatasetsTable extends Migration
     {
         Schema::create('datasets', function (Blueprint $table) {
             $table->id();
+            $table->integer('twitter_id');
+            $table->tinyInteger('sentiment');
+            $table->string('user', 50);
+            $table->text('text');
+            $table->string('posted_at', 50);
             $table->timestamps();
         });
     }
